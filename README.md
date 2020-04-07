@@ -1,4 +1,4 @@
-# testeAPI_brunaGouveia
+# prova_sicredi
 
 Este projeto tem o objetivo de testar automaticamente os cenários de criação e remoção de Customers na aplicação "https://www.grocerycrud.com/demo/bootstrap_theme" utilizando Selenium WebDriver, Java e Cucumber.
 

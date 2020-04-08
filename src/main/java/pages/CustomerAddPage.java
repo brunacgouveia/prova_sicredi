@@ -46,7 +46,7 @@ public class CustomerAddPage {
 	private WebElement txtCountry;
 	
 	@FindBy(id="field_salesRepEmployeeNumber_chosen")
-	private WebElement comboFromEmployeer;
+	private WebElement cmbFromEmployeer;
 	
 	@FindBy(xpath="//div[@id='field_salesRepEmployeeNumber_chosen']//input")
 	private WebElement txtFromEmployeer;
@@ -72,72 +72,72 @@ public class CustomerAddPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void preencherCampoName(String name) {
+	public void setName(String name) {
 		txtName.clear();
 		txtName.sendKeys(name);
 	}
 	
-	public void preencherCampoLastName(String lastName) {
+	public void setLastName(String lastName) {
 		txtLastName.clear();
 		txtLastName.sendKeys(lastName);
 	}
 	
-	public void preencherCampoContactFirstName(String contactFirstName) {
+	public void setContactFirstName(String contactFirstName) {
 		txtContactFirstName.clear();
 		txtContactFirstName.sendKeys(contactFirstName);
 	}
 	
-	public void preencherCampoPhone(String phone) {
+	public void setPhone(String phone) {
 		txtPhone.clear();
 		txtPhone.sendKeys(phone);
 	}
 	
-	public void preencherCampoAddressLine1(String addressLine1) {
+	public void setAddressLine1(String addressLine1) {
 		txtAddressLine1.clear();
 		txtAddressLine1.sendKeys(addressLine1);
 	}
 	
-	public void preencherCampoAddressLine2(String addressLine2) {
+	public void setAddressLine2(String addressLine2) {
 		txtAddressLine2.clear();
 		txtAddressLine2.sendKeys(addressLine2);
 	}
 	
-	public void preencherCampoCity(String city) {
+	public void setCity(String city) {
 		txtCity.clear();
 		txtCity.sendKeys(city);
 	}
 	
-	public void preencherCampoState(String state) {
+	public void setState(String state) {
 		txtState.clear();
 		txtState.sendKeys(state);
 	}
 	
-	public void preencherCampoPostalCode(String postalCode) {
+	public void setPostalCode(String postalCode) {
 		txtPostalCode.clear();
 		txtPostalCode.sendKeys(postalCode);
 	}
 	
-	public void preencherCampoCountry(String country) {
+	public void setCountry(String country) {
 		txtCountry.clear();
 		txtCountry.sendKeys(country);
 	}
 	
-	public void preencherCampoFromEmployeer(String fromEmployeer) {
-		comboFromEmployeer.click();
+	public void setFromEmployeer(String fromEmployeer) {
+		cmbFromEmployeer.click();
 		txtFromEmployeer.sendKeys(fromEmployeer);
 		lnkFromEmployeer.click();
 	}
 	
-	public void preencherCampoCreditLimit(String creditLimit) {
+	public void setCreditLimit(String creditLimit) {
 		txtCreditLimit.clear();
 		txtCreditLimit.sendKeys(creditLimit);
 	}
 	
-	public void clicarBotaoSave() {
+	public void clickSaveButton() {
 		btnSave.click();
 	}
 	
-	public boolean validarMensagemCustomerAdicionado() {
+	public boolean validateMessageCustomerAdded() {
 		try {
 			wait.withTimeout(Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='report-success']/p[contains(text(),'Your data has been successfully stored into the database.')]")));
@@ -148,7 +148,7 @@ public class CustomerAddPage {
 	    }		
 	}
 	
-	public boolean isPaginaDeCriacao() {
+	public boolean isCustomerAdditionPage() {
 		try {
 			wait.withTimeout(Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='crudForm']")));

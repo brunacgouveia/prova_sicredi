@@ -21,27 +21,23 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
 	public static WebDriver driver;
-
-	public DriverFactory() {
-		driver = null;
+	
+	public static void startDriver() {
+		startChromeDriver();
 	}
 	
-	public static void iniciarDriver() {
-		inicializarChromeDriver();
-	}
-	
-	public static void fecharDriver() {
+	public static void closeDriver() {
 		driver.close();
 		driver = null;
 	}
 	
 	public static WebDriver getDriver() {
 		if(driver == null)
-			inicializarChromeDriver();
+			startChromeDriver();
 		return driver;
 	}
 	
-	public static void acessarURL(String url){		
+	public static void acessURL(String url){		
 		try {	
 			driver.navigate().to(url);
 		} 
@@ -58,7 +54,7 @@ public class DriverFactory {
 		}
 	}
 	
-	public static void esperar(long timeMilliseconds) {
+	public static void waitForMilliseconds(long timeMilliseconds) {
 		try {
 			Thread.sleep(timeMilliseconds);
 		} catch (InterruptedException e) {
@@ -66,7 +62,7 @@ public class DriverFactory {
 		}
 	}
 	
-    private static void inicializarChromeDriver() {    	
+    private static void startChromeDriver() {    	
     	Proxy proxy = new Proxy();
         proxy.setProxyType(ProxyType.SYSTEM);
     	    	

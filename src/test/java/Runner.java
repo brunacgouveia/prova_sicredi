@@ -30,13 +30,13 @@ public class Runner {
 		}
 		
 		System.out.println("Iniciando driver...");
-		DriverFactory.iniciarDriver();		
+		DriverFactory.startDriver();		
 	}
 	
 	@AfterClass
 	public static void tearDown() {
 		System.out.println("Fechando driver...");
-		DriverFactory.fecharDriver();
+		DriverFactory.closeDriver();
 		extentReports.flush();
 	}
 	

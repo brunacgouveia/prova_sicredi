@@ -16,7 +16,7 @@ import driver.DriverFactory;
 public class CustomerListPage {
 	
 	@FindBy(id="switch-version-select")
-	private WebElement comboVersao;
+	private WebElement cmbVersion;
 	
 	@FindBy(xpath="//option[@value='bootstrap_theme_v4']")
 	private WebElement optionV4;
@@ -25,7 +25,7 @@ public class CustomerListPage {
 	private WebElement btnAddCustomer;
 	
 	@FindBy(name="customerName")
-	private WebElement textSearchName;
+	private WebElement txtSearchName;
 	
 	@FindBy(className="select-all-none")
 	private WebElement ckbSelectAllCustomers;	
@@ -45,32 +45,32 @@ public class CustomerListPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void selecionarVersao4() {
-		comboVersao.click();
+	public void selectVersion4() {
+		cmbVersion.click();
 		optionV4.click();
 		
 		wait.withTimeout(Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@action='/demo/bootstrap_theme_v4']")));
 		
-		DriverFactory.esperar(2000);
+		DriverFactory.waitForMilliseconds(2000);
 	}
 	
-	public void clicarBotaoAddCustomer() {
+	public void clickAddCustomerButton() {
 		btnAddCustomer.click();
 	}
 
-	public void preencherCampoPesquisaName(String name) {
-		textSearchName.clear();
-		textSearchName.sendKeys(name);
+	public void searchForName(String name) {
+		txtSearchName.clear();
+		txtSearchName.sendKeys(name);
 		
-		DriverFactory.esperar(3000);
+		DriverFactory.waitForMilliseconds(3000);
 	}	
 	
-	public void selecionarCustomer() {
+	public void selectCustomer() {
 		ckbSelectAllCustomers.click();
 	}
 	
-	public void clicarBotaoDelete() {
+	public void clickDeleteButton() {
 		btnDelete.click();
 		
 		String xpath = "//div[contains(@class,'delete-multiple-confirmation') and contains(@style,'display: block;')]//div[@class='modal-body']/p[contains(text(),'Are you sure that you want to delete this 1 item?')]";
@@ -78,11 +78,11 @@ public class CustomerListPage {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));		
 	}	
 		
-	public void confirmarRemocaoClientePopup() {
+	public void confirmDeletionCustomerPopup() {
 		btnDeletePopup.click();
 	}
 
-	public boolean validarMensagemRemocaoCliente() {
+	public boolean validateMessageCustomerDeleted() {
 		try {
 			wait.withTimeout(Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-growl='message']/p[text()='Your data has been successfully deleted from the database.']")));
@@ -93,7 +93,7 @@ public class CustomerListPage {
 	    }
 	}	
 	
-	public boolean isPaginaDeListagem() {
+	public boolean isCustomerListingPage() {
 		try {
 			wait.withTimeout(Duration.ofSeconds(1));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form[@id='gcrud-search-form']")));
